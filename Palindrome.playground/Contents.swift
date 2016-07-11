@@ -49,12 +49,31 @@ func palindrome(word: String) -> Bool {
     let newWord = word.stringByTrimmingCharactersInSet(punctuation)
     
     let reverse = String(newWord.characters.reverse())
-    return (newWord == reverse)
+    return newWord == reverse
 }
 
-print(palindrome("racecar....."))
+
+print(palindrome("racecar...."))
 print(palindrome("bumblebee"))
 
 print(palindrome("dammit im mad"))
+
+
+func pppalindrome(word: String) -> Bool {
+    
+    let orig = word.lowercaseString.componentsSeparatedByCharactersInSet(NSCharacterSet.letterCharacterSet().invertedSet).joinWithSeparator("")
+    
+    let reversedWord = String(orig.characters.reverse())
+    
+    return orig == reversedWord
+    
+}
+
+print(pppalindrome("racecar"))
+print(pppalindrome("bumblebee"))
+print(pppalindrome("dammit i'm mad!!!"))
+
+
+
 
 
