@@ -16,12 +16,22 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    [self highestNumber];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (NSNumber *)highestNumber {
+    
+    NSArray *intArray = @[@2, @9, @108, @54, @32];
+    NSNumber *x = @0;
+    
+    for (NSNumber *n in intArray) {
+        if (n > x) {
+            x = n;
+        }
+    }
+    NSLog(@"%@", x);
+    return x;
+    
 }
 
 @end
