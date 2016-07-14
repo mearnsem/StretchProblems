@@ -16,12 +16,21 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+    [self divisibleBy:@2 betweenOAnd:@12];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (NSArray *)divisibleBy:(NSNumber *)x betweenOAnd:(NSNumber *)y {
+    
+    NSMutableArray *intArray = [NSMutableArray new];
+    
+    for (int num = 0; num <= y.intValue; num++) {
+        if (num % x.intValue == 0) {
+            [intArray addObject:[NSNumber numberWithInt:num]];
+        }
+    }
+    NSLog(@"%@", intArray);
+    return intArray;
+    
 }
 
 @end
