@@ -11,12 +11,15 @@ import Foundation
 class Post {
     
     let name: String
+    let text: String
     let url: String
     
     init?(dictionary: [String: AnyObject]) {
-        guard let name = dictionary["title"] as? String, url = dictionary["url"] as? String else {return nil}
+        guard let dataDictionary = dictionary["data"] as? [String: AnyObject],
+            name = dataDictionary["title"] as? String, text = dataDictionary["selftext"] as? String, url = dataDictionary["url"] as? String else {return nil}
         
         self.name = name
+        self.text = text
         self.url = url
     }
     

@@ -32,7 +32,6 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
             })
         }
         print("Searching...")
-        
         searchBar.resignFirstResponder()
     }
 
@@ -48,7 +47,7 @@ class SearchTableViewController: UITableViewController, UISearchBarDelegate {
 
         let post = posts[indexPath.row]
         cell.textLabel?.text = post.name
-        cell.detailTextLabel?.text = post.url
+        cell.detailTextLabel?.text = post.text
 
         return cell
     }

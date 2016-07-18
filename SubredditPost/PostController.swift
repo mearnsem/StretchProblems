@@ -10,18 +10,19 @@ import Foundation
 
 class PostController {
     
-    static let baseUrl = "https://www.reddit.com/r/"
+    static let baseUrl = "https://www.reddit.com/r/AskReddit"
     
     static func getPost(searchTerm: String, completion: (posts: [Post]?) -> Void) {
         
-        let searchUrl = baseUrl + searchTerm.lowercaseString
-        let url = NSURL(string: searchUrl)
         
-        guard let unwrappedUrl = url else {return}
+        guard let url = NSURL(string: baseUrl) else {
+            completion(posts: [])
+            return
+        }
         
-        let urlParameters = ["query":"search?q="]
+        let urlParameters = ["search":"search?q=", "query":"\(searchTerm)"]
         
-        NetworkController.performRequestForURL(unwrappedUrl, httpMethod: .Get, urlParameters: urlParameters) { (data, error) in
+        NetworkController.performRequestForURL(url, httpMethod: .Get, urlParameters: urlParameters) { (data, error) in
             guard let data = data,
                 jsonDictionary = (try? NSJSONSerialization.JSONObjectWithData(data, options: .AllowFragments)) as? [String: AnyObject],
                 resultsArray = jsonDictionary["data"] as? [[String: AnyObject]] else {

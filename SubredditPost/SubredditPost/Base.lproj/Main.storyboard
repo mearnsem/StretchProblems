@@ -17,7 +17,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="600" height="62"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
-                                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="oMG-Nm-zVj">
+                                <searchBar contentMode="redraw" placeholder="Search for subreddit" translatesAutoresizingMaskIntoConstraints="NO" id="oMG-Nm-zVj">
                                     <rect key="frame" x="0.0" y="18" width="600" height="44"/>
                                     <textInputTraits key="textInputTraits"/>
                                     <connections>
