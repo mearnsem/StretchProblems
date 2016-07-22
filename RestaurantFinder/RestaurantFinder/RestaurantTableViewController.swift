@@ -13,14 +13,15 @@ import MapKit
 class RestaurantTableViewController: UITableViewController, CLLocationManagerDelegate {
 
     let locationManager = CLLocationManager()
-    let mapView = MKMapView()
-    
     var restaurants: [Restaurant] = []
     
     func searchForRestaurants() {
         let request = MKLocalSearchRequest()
         request.naturalLanguageQuery = "Restaurants"
-        request.region = mapView.region
+        guard let coordinates = locationManager.location?.coordinate else {return}
+        let span = MKCoordinateSpan(latitudeDelta: 1.0, longitudeDelta: 1.0)
+        let region = MKCoordinateRegion(center: coordinates, span: span)
+        request.region = region
         
         let search = MKLocalSearch(request: request)
         search.startWithCompletionHandler { (response, error) in
@@ -47,6 +48,7 @@ class RestaurantTableViewController: UITableViewController, CLLocationManagerDel
         locationManager.delegate = self
         locationManager.requestWhenInUseAuthorization()
         locationManager.desiredAccuracy = kCLLocationAccuracyThreeKilometers
+        locationManager.startUpdatingLocation()
         
         searchForRestaurants()
     }
